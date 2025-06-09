@@ -26,18 +26,22 @@ function initCheckout() {
 
 // Display order items in the summary
 function displayOrderItems() {
-    orderItems.innerHTML = cart.map(item => `
-        <div class="checkout-item">
-            <div class="checkout-item-image">
-                <img src="${item.image}" alt="${item.name}">
+    orderItems.innerHTML = cart.map(item => {
+        // Fix: handle both object and string image formats
+        const imagePath = typeof item.image === 'object' ? (item.image.desktop || item.image.mobile) : item.image;
+        return `
+            <div class="checkout-item">
+                <div class="checkout-item-image">
+                    <img src="${imagePath}" alt="${item.name}">
+                </div>
+                <div class="checkout-item-details">
+                    <h3>${item.name}</h3>
+                    <p class="checkout-item-price">$${item.price.toFixed(2)}</p>
+                    <p class="checkout-item-quantity">Quantity: ${item.quantity}</p>
+                </div>
             </div>
-            <div class="checkout-item-details">
-                <h3>${item.name}</h3>
-                <p class="checkout-item-price">$${item.price.toFixed(2)}</p>
-                <p class="checkout-item-quantity">Quantity: ${item.quantity}</p>
-            </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Update order summary totals
@@ -167,9 +171,30 @@ function setupModalHandlers() {
 
     // Handle order confirmation
     confirmOrderBtn.addEventListener('click', () => {
-        // Clear cart
-        localStorage.removeItem('cart');
-        
+        // Debug: Log form field values
+        console.log('Name:', document.getElementById('name').value);
+        console.log('Email:', document.getElementById('email').value);
+        console.log('Address:', document.getElementById('address').value);
+        console.log('City:', document.getElementById('city').value);
+        console.log('Postal Code:', document.getElementById('postal-code').value);
+        console.log('Country:', document.getElementById('country').value);
+        console.log('Payment Method:', document.querySelector('input[name="payment"]:checked').value);
+        console.log('Subtotal:', cart.reduce((sum, item) => sum + (item.price * item.quantity), 0));
+
+        // Save order data to localStorage before redirecting to confirmation page
+        const orderData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('address').value,
+            city: document.getElementById('city').value,
+            postalCode: document.getElementById('postal-code').value,
+            country: document.getElementById('country').value,
+            paymentMethod: document.querySelector('input[name="payment"]:checked').value,
+            subtotal: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+        };
+        localStorage.setItem('orderData', JSON.stringify(orderData));
+        // Debug: Log saved orderData
+        console.log('Saved orderData:', orderData);
         // Redirect to confirmation page
         window.location.href = 'confirmation.html';
     });

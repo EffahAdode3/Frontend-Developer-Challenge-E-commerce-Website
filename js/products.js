@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadProducts();
     setupEventListeners();
     updateCartCount();
+    ensureCartButtonVisible();
 });
 
 // Load products from data.json
@@ -187,4 +188,21 @@ function showNotification(message) {
     setTimeout(() => {
         notification.remove();
     }, 3000);
+}
+
+// Ensure cart button is always visible and clickable on mobile
+function ensureCartButtonVisible() {
+    const cartButton = document.querySelector('.cart-button');
+    if (cartButton) {
+        cartButton.style.display = 'flex';
+        cartButton.style.position = 'fixed';
+        cartButton.style.bottom = '20px';
+        cartButton.style.right = '20px';
+        cartButton.style.zIndex = '1000';
+        cartButton.style.backgroundColor = 'var(--primary-color)';
+        cartButton.style.color = 'white';
+        cartButton.style.padding = '10px 15px';
+        cartButton.style.borderRadius = '50%';
+        cartButton.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+    }
 } 
