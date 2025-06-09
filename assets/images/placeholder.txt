@@ -1,0 +1,10 @@
+This directory contains product images.
+Please add the following images:
+- headphones.jpg
+- smartwatch.jpg
+- camera.jpg
+- backpack.jpg
+- earbuds.jpg
+- speaker.jpg
+- wallet.jpg
+- powerbank.jpg 

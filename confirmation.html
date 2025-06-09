@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - E-Commerce Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">E-Store</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="container">
+            <div class="confirmation-container">
+                <div class="confirmation-header">
+                    <i class="fas fa-check-circle"></i>
+                    <h1>Order Confirmed!</h1>
+                    <p>Thank you for your purchase. Your order has been received.</p>
+                </div>
+
+                <div class="confirmation-details">
+                    <div class="order-info">
+                        <h2>Order Information</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Order Number:</span>
+                                <span class="value" id="order-number"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Date:</span>
+                                <span class="value" id="order-date"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Total:</span>
+                                <span class="value" id="order-total"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Payment Method:</span>
+                                <span class="value" id="payment-method"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+                        <div id="order-items">
+                            <!-- Order items will be loaded dynamically -->
+                        </div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal"></span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shipping"></span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="total"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shipping-info">
+                        <h2>Shipping Information</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Name:</span>
+                                <span class="value" id="shipping-name"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Address:</span>
+                                <span class="value" id="shipping-address"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">City:</span>
+                                <span class="value" id="shipping-city"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Postal Code:</span>
+                                <span class="value" id="shipping-postal"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Country:</span>
+                                <span class="value" id="shipping-country"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Your trusted online shopping destination</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@estore.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 E-Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/confirmation.js"></script>
+</body>
+</html> 
